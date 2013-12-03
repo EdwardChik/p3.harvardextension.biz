@@ -1,19 +1,55 @@
-// logic to pull RSS feed content into display page
-function randomSelect() {
+// this file contains the logic to play a song and generate character images
 
-	// create an array of songs + characters
-	var catalog = [];
+$(document).ready(function(){
 
-	catalog['mario'] = "super_mario_world.mid";
-	catalog['link'] = "legend_of_zelda_.mid";
-	catalog['samus'] = "super_metroid.mid";
-	catalog['donkey_kong'] = "donkey_kong_country.mid";
-	catalog['star_fox'] = "star_fox.mid";
+	// create an array of base character string values
+	var characters = [];
 
-	// randomly select song + character (integer)
-	var option = math.floor(math.random()*6);
-
+	// assign base filename values to characters in array
+	characters['mario']			= "super_mario_world";
+	characters['link']			= "legend_of_zelda";
+	characters['samus']			= "super_metroid";
+	characters['donkey_kong']	= "donkey_kong_country";
+	characters['star_fox']		= "star_fox";
 
 
 
-}
+
+	$('#select-mario').click(function(){
+
+		// console log for debugging
+		console.log('Mario was clicked!');
+
+
+	}); // end character click
+
+
+	// randomly selects a character
+	function randomSelect() {
+
+		// randomly select song + image (integer)
+		var random = math.floor(math.random()*6);
+
+		// assigns value of selected array element to variable
+		var selected = characters[random];
+
+		// return selected character
+		return selected;
+
+	} // end of randomSelect function
+
+
+
+
+
+	function play_sound(selected) {
+		
+		// stops currently playing song (if any)
+		document.getElementById(color).pause();
+
+		// play song
+		document.getElementById(color).play();
+		
+	} // end of play sound function
+
+}); //end ready
