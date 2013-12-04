@@ -5,30 +5,27 @@ $(document).ready(function() {
 	// create an array of base character string values
 	var characters = [];
 
-	// assign base filename values to characters in array
-	characters['mario']			= "super_mario_world";
-	characters['link']			= "legend_of_zelda";
-	characters['samus']			= "super_metroid";
-	characters['donkey_kong']	= "donkey_kong_country";
-	characters['star_fox']		= "star_fox";
+	// assign base character values to array
+	characters[0] = "Mario";
+	characters[1] = "Link";
+	characters[2] = "Samus";
+	characters[3] = "Donkey Kong";
+	characters[4] = "Fox McCloud";
 
 
 
 	// randomly select song + image (integer)
-	var random = Math.floor(Math.random()*6);
+	var random = Math.floor(Math.random()*5);
 
 	// assigns value of selected array element to variable
 	var selected = characters[random];
 
-
+	alert("Value of random is " + random + ", character is " + selected);
 
 	// generate audio player with randomly selected audio clip
 	// <source id="audio_player" src="audio/super_mario_world.mp3" type="audio/mpeg">
 
-	$('#play_song').click(function() {
-		$("audio").html('<audio controls><source src="audio/' + characters[random] + '.mp3" type="audio/mpeg">Unfortunately, it appears that your browser does not support the audio playback element.</audio>');
-		alert("Confirmed!");
-	});
+	$('#random_song').html('<audio controls><source src="audio/' + characters[random] + '.mp3" type="audio/mpeg">Unfortunately, it appears that your browser does not support the audio playback element.</audio>');
 
 
 	// when characters are selected by user
