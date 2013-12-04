@@ -1,6 +1,6 @@
 // this file contains the logic to play a song and generate character images
 
-$(document).ready(function(){
+$(document).ready(function() {
 
 	// create an array of base character string values
 	var characters = [];
@@ -14,15 +14,39 @@ $(document).ready(function(){
 
 
 
+	// randomly select song + image (integer)
+	var random = Math.floor(Math.random()*6);
 
-	// when character is selected
-	$('#select-mario').click(function(){
-
-		// console log for debugging
-		console.log('Mario was clicked!');
+	// assigns value of selected array element to variable
+	var selected = characters[random];
 
 
-	}); // end character click
+
+	// generate audio player with randomly selected audio clip
+	// <source id="audio_player" src="audio/super_mario_world.mp3" type="audio/mpeg">
+
+	$('#play_song').click(function() {
+		$("audio").html('<audio controls><source src="audio/' + characters[random] + '.mp3" type="audio/mpeg">Unfortunately, it appears that your browser does not support the audio playback element.</audio>');
+		alert("Confirmed!");
+	});
+
+
+	// when characters are selected by user
+
+		// when Mario is selected
+		$('#select-mario').click(function(){
+
+			// console log for debugging
+			console.log('Mario was clicked!');
+
+
+
+		});
+
+
+
+
+	// end character click
 
 
 	// randomly selects a character
