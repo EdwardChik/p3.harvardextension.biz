@@ -15,6 +15,7 @@ $(document).ready(function(){
 
 
 
+	// when character is selected
 	$('#select-mario').click(function(){
 
 		// console log for debugging
