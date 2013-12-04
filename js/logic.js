@@ -53,4 +53,13 @@ $(document).ready(function(){
 		
 	} // end of play sound function
 
+
+
+
+
+	// fades in all images on the page
+	$(window).load(function() {
+		$('img').animate({'opacity':1}, 1000);
+	});
+
 }); //end ready
