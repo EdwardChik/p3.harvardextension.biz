@@ -12,6 +12,15 @@ $(document).ready(function() {
 	series[3] = "Donkey Kong Country";
 	series[4] = "Star Fox";
 
+	// tracks button clicked status
+	var clicked = [];
+
+	// initializes button states
+	clicked['mario'] = "ready";
+	clicked['link'] = "ready";
+	clicked['samus'] = "ready";
+	clicked['donkey-kong'] = "ready";
+	clicked['fox-mccloud'] = "ready";
 
 	// randomly select song + image (integer)
 	var random = Math.floor(Math.random()*5);
@@ -37,9 +46,12 @@ $(document).ready(function() {
 			if (selected == 'Super Mario') {
   				message = "1UP for you!";
   				button_colour = "success";
+				clicked['mario'] = "right";
+				updateButtons(selected, button_colour);
   			} else {
   				message = "Sorry, not Mario.";
   				button_colour = "danger";
+				clicked['mario'] = "wrong";
   			}
 
 			$('#select-mario').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-mario" disabled="disabled">' + message + '</button>');
@@ -55,9 +67,11 @@ $(document).ready(function() {
 			if (selected == 'The Legend of Zelda') {
   				message = "Extra heart!";
   				button_colour = "success";
+  				clicked['link'] = "right";
   			} else {
   				message = "Sorry, not Link.";
   				button_colour = "danger";
+  				clicked['link'] = "wrong";
   			}
 
 			$('#select-link').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-link" disabled="disabled">' + message + '</button>');
@@ -73,9 +87,11 @@ $(document).ready(function() {
 			if (selected == 'Super Metroid') {
   				message = "Hyper beam found!";
   				button_colour = "success";
+  				clicked['samus'] = "right";
   			} else {
   				message = "Sorry, not Samus.";
   				button_colour = "danger";
+  				clicked['samus'] = "wrong";
   			}
 
 			$('#select-samus').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-samus" disabled="disabled">' + message + '</button>');
@@ -91,9 +107,11 @@ $(document).ready(function() {
 			if (selected == 'Donkey Kong Country') {
   				message = "Bananas for all!";
   				button_colour = "success";
+  				clicked['donkey-kong'] = "right";
   			} else {
   				message = "Sorry, not DK.";
   				button_colour = "danger";
+  				clicked['donkey-kong'] = "wrong";
   			}
 
 			$('#select-donkey-kong').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-donkey-kong" disabled="disabled">' + message + '</button>');
@@ -109,19 +127,30 @@ $(document).ready(function() {
 			if (selected == 'Star Fox') {
   				message = "Do a barrel roll!";
   				button_colour = "success";
+  				clicked['fox-mccloud'] = "right";
   			} else {
   				message = "Sorry, not Fox.";
   				button_colour = "danger";
+  				clicked['fox-mccloud'] = "wrong";
   			}
 
 			$('#select-fox-mccloud').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-fox-mccloud" disabled="disabled">' + message + '</button>');
 			
 		});
 
-
 	// end character click
 
 
+	// function to update all buttons upon click
+	function updateButtons(message, button_colour) {
 
+		// if user guessed right, update all buttons
+		if (button_colour == 'success') {
+
+		} else {
+
+		}
+
+	} // end update buttons
 
 }); //end ready
