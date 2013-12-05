@@ -34,17 +34,89 @@ $(document).ready(function() {
 			// console log for debugging
 			alert('Mario was clicked!');
 
-			if ($(selected).val() == 'Super Mario') {
+			if (selected == 'Super Mario') {
   				message = "1UP for you!";
+  				button_colour = "success";
   			} else {
   				message = "Sorry, not Mario.";
+  				button_colour = "danger";
   			}
 
-			$('#select-mario').replaceWith('<button type="button" class="btn btn-primary" id="select-mario" disabled="disabled">' + message + '</button>');
+			$('#select-mario').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-mario" disabled="disabled">' + message + '</button>');
 
 		});
 
+		// when Link is selected
+		$('#select-link').click(function() {
 
+			// console log for debugging
+			alert('Link was clicked!');
+
+			if (selected == 'The Legend of Zelda') {
+  				message = "Extra heart!";
+  				button_colour = "success";
+  			} else {
+  				message = "Sorry, not Link.";
+  				button_colour = "danger";
+  			}
+
+			$('#select-link').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-link" disabled="disabled">' + message + '</button>');
+			
+		});
+
+		// when Samus is selected
+		$('#select-samus').click(function() {
+
+			// console log for debugging
+			alert('Samus was clicked!');
+
+			if (selected == 'Super Metroid') {
+  				message = "Hyper beam found!";
+  				button_colour = "success";
+  			} else {
+  				message = "Sorry, not Samus.";
+  				button_colour = "danger";
+  			}
+
+			$('#select-samus').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-samus" disabled="disabled">' + message + '</button>');
+			
+		});
+
+		// when Donkey Kong is selected
+		$('#select-donkey-kong').click(function() {
+
+			// console log for debugging
+			alert('Donkey Kong was clicked!');
+
+			if (selected == 'Donkey Kong Country') {
+  				message = "Bananas for all!";
+  				button_colour = "success";
+  			} else {
+  				message = "Sorry, not DK.";
+  				button_colour = "danger";
+  			}
+
+			$('#select-donkey-kong').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-donkey-kong" disabled="disabled">' + message + '</button>');
+			
+		});
+
+		// when Fox McCloud is selected
+		$('#select-fox-mccloud').click(function() {
+
+			// console log for debugging
+			alert('Fox McCloud was clicked!');
+
+			if (selected == 'Star Fox') {
+  				message = "Do a barrel roll!";
+  				button_colour = "success";
+  			} else {
+  				message = "Sorry, not Fox.";
+  				button_colour = "danger";
+  			}
+
+			$('#select-fox-mccloud').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-fox-mccloud" disabled="disabled">' + message + '</button>');
+			
+		});
 
 
 	// end character click
