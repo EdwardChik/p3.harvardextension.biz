@@ -2,6 +2,9 @@
 
 $(document).ready(function() {
 
+	// initializes scoreboard
+	var scoreboard = 5;
+
 	// create an array of base series string values
 	var series = [];
 
@@ -52,6 +55,7 @@ $(document).ready(function() {
   				message = "Sorry, not Mario.";
   				button_colour = "danger";
 				clicked['mario'] = "wrong";
+				decreaseScore();
   			}
 
 			$('#select-mario').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-mario" disabled="disabled">' + message + '</button>');
@@ -73,6 +77,7 @@ $(document).ready(function() {
   				message = "Sorry, not Link.";
   				button_colour = "danger";
   				clicked['link'] = "wrong";
+  				decreaseScore();
   			}
 
 			$('#select-link').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-link" disabled="disabled">' + message + '</button>');
@@ -94,6 +99,7 @@ $(document).ready(function() {
   				message = "Sorry, not Samus.";
   				button_colour = "danger";
   				clicked['samus'] = "wrong";
+  				decreaseScore();
   			}
 
 			$('#select-samus').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-samus" disabled="disabled">' + message + '</button>');
@@ -115,6 +121,7 @@ $(document).ready(function() {
   				message = "Sorry, not DK.";
   				button_colour = "danger";
   				clicked['donkey-kong'] = "wrong";
+  				decreaseScore();
   			}
 
 			$('#select-donkey-kong').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-donkey-kong" disabled="disabled">' + message + '</button>');
@@ -136,6 +143,7 @@ $(document).ready(function() {
   				message = "Sorry, not Fox.";
   				button_colour = "danger";
   				clicked['fox-mccloud'] = "wrong";
+  				decreaseScore();
   			}
 
 			$('#select-fox-mccloud').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-fox-mccloud" disabled="disabled">' + message + '</button>');
@@ -172,5 +180,15 @@ $(document).ready(function() {
 		}
 
 	} // end disable buttons
+
+
+	// decreases current score by 1
+	function decreaseScore() {
+
+		scoreboard--;
+
+		// updates scoreboard element
+		$('#scoreboard').replaceWith('<div id="scoreboard">Hearts: ' + scoreboard + '</div>');
+	}
 
 }); //end ready
