@@ -47,7 +47,7 @@ $(document).ready(function() {
   				message = "1UP for you!";
   				button_colour = "success";
 				clicked['mario'] = "right";
-				updateButtons(selected, button_colour);
+				disableButtons("mario");
   			} else {
   				message = "Sorry, not Mario.";
   				button_colour = "danger";
@@ -68,6 +68,7 @@ $(document).ready(function() {
   				message = "Extra heart!";
   				button_colour = "success";
   				clicked['link'] = "right";
+				disableButtons("link");
   			} else {
   				message = "Sorry, not Link.";
   				button_colour = "danger";
@@ -88,6 +89,7 @@ $(document).ready(function() {
   				message = "Hyper beam found!";
   				button_colour = "success";
   				clicked['samus'] = "right";
+				disableButtons("samus");
   			} else {
   				message = "Sorry, not Samus.";
   				button_colour = "danger";
@@ -108,6 +110,7 @@ $(document).ready(function() {
   				message = "Bananas for all!";
   				button_colour = "success";
   				clicked['donkey-kong'] = "right";
+				disableButtons("donkey-kong");
   			} else {
   				message = "Sorry, not DK.";
   				button_colour = "danger";
@@ -128,6 +131,7 @@ $(document).ready(function() {
   				message = "Do a barrel roll!";
   				button_colour = "success";
   				clicked['fox-mccloud'] = "right";
+				disableButtons("fox-mccloud");
   			} else {
   				message = "Sorry, not Fox.";
   				button_colour = "danger";
@@ -142,15 +146,31 @@ $(document).ready(function() {
 
 
 	// function to update all buttons upon click
-	function updateButtons(message, button_colour) {
+	function disableButtons() {
 
-		// if user guessed right, update all buttons
-		if (button_colour == 'success') {
+		var message = "Not selected.";
 
-		} else {
-
+		// update all buttons that have not been clicked yet
+		if (clicked['mario'] == "ready") {
+			$('#select-mario').replaceWith('<button type="button" class="btn btn-primary" id="select-mario" disabled="disabled">' + message + '</button>');
 		}
 
-	} // end update buttons
+		if (clicked['link'] == "ready") {
+			$('#select-link').replaceWith('<button type="button" class="btn btn-primary" id="select-mario" disabled="disabled">' + message + '</button>');
+		}
+
+		if (clicked['samus'] == "ready") {
+			$('#select-samus').replaceWith('<button type="button" class="btn btn-primary" id="select-mario" disabled="disabled">' + message + '</button>');
+		}
+
+		if (clicked['donkey-kong'] == "ready") {
+			$('#select-donkey-kong').replaceWith('<button type="button" class="btn btn-primary" id="select-mario" disabled="disabled">' + message + '</button>');
+		}
+
+		if (clicked['fox-mccloud'] == "ready") {
+			$('#select-fox-mccloud').replaceWith('<button type="button" class="btn btn-primary" id="select-mario" disabled="disabled">' + message + '</button>');
+		}
+
+	} // end disable buttons
 
 }); //end ready
