@@ -3,27 +3,13 @@
 $(document).ready(function() {
 
 	// initializes scoreboard
-	var scoreboard = 5;
+	var scoreboard;
 
 	// create an array of base series string values
 	var series = [];
 
-	// assign base series values to array
-	series[0] = "Super Mario";
-	series[1] = "The Legend of Zelda";
-	series[2] = "Super Metroid";
-	series[3] = "Donkey Kong Country";
-	series[4] = "Star Fox";
-
-	// tracks button clicked status
-	var clicked = [];
-
-	// initializes button states
-	clicked['mario'] = "ready";
-	clicked['link'] = "ready";
-	clicked['samus'] = "ready";
-	clicked['donkey-kong'] = "ready";
-	clicked['fox-mccloud'] = "ready";
+	// initializes page (i.e. characters, score)
+	initialize();
 
 	// randomly select song + image (integer)
 	var random = Math.floor(Math.random()*5);
@@ -33,6 +19,7 @@ $(document).ready(function() {
 
 	// debugging, delete when done
 	alert("Value of random is " + random + ", character is " + selected);
+
 
 	// generate audio player with randomly selected audio clip
 	$('#random_song').html('<audio controls><source src="audio/' + series[random] + '.mp3" type="audio/mpeg">Unfortunately, it appears that your browser does not support the audio playback element.</audio>');
@@ -153,6 +140,32 @@ $(document).ready(function() {
 	// end character click
 
 
+	// initialize game
+	function initialize() {
+
+		// resets scoreboard
+		scoreboard = 5;
+
+		// assign base series values to array
+		series[0] = "Super Mario";
+		series[1] = "The Legend of Zelda";
+		series[2] = "Super Metroid";
+		series[3] = "Donkey Kong Country";
+		series[4] = "Star Fox";
+
+		// tracks button clicked status
+		var clicked = [];
+
+		// initializes button states
+		clicked['mario'] = "ready";
+		clicked['link'] = "ready";
+		clicked['samus'] = "ready";
+		clicked['donkey-kong'] = "ready";
+		clicked['fox-mccloud'] = "ready";
+
+	}
+
+
 	// function to update all buttons upon click
 	function disableButtons() {
 
@@ -191,4 +204,4 @@ $(document).ready(function() {
 		$('#scoreboard').replaceWith('<div id="scoreboard">Hearts: ' + scoreboard + '</div>');
 	}
 
-}); //end ready
+}); //end ready]
