@@ -163,27 +163,39 @@ $(document).ready(function() {
 
 		$('#scoreboard').replaceWith('<div id="scoreboard">Hearts: 5</div>');
 
-		// re-initializes clicked tracking
-		for(var index in clicked) {
-			clicked[index] = "ready";
 
-			alert("The current value of initialization is " + index);		
+		// convert series names to lowercase for button values
+		var series_lower = [];
+
+		for (var i = 0; i < series.length; i++) {
+			series_lower[i] = series[i].toLowerCase();
 		}
 
-		var series_lower = series.slice(0);
+		alert("Series_lower is now: " + series_lower.toString());
 
-		alert(series_lower.toString());
+
+		for(var index in series_lower) {
+			clicked[index] = "ready";
+		}
+
+		alert("Clicked is now: " + clicked.toString());
+
+		alert("Series_lower is now: " + series_lower.toString());
 
 		i = 0;
 
 		// re-initializes character buttons to default
-		for(var index in clicked) {
-			alert("The index value in this reboot is " + index);
+		for(var index in series_lower) {
+			alert("The index value in this reboot is " + series_lower[i]);
 
-			$('#select-' + index).replaceWith('<button type="button" class="btn btn-primary" id="select-' + index + '">This song is ' + series[i] + '!</button>');
+			$('#select-' + series_lower[i]).replaceWith('<button type="button" class="btn btn-primary" id="select-' + series_lower[i] + '">This song is ' + series[i] + '!</button>');
 
 			i++;
 		}
+
+		alert("Series is now: " + series.toString());
+
+		alert("Selected is now: " + selected.toString());
 
 	});
 
@@ -240,7 +252,7 @@ $(document).ready(function() {
 			alert("The current value of index is " + index);
 
 			if (clicked[index] == "ready") {
-				$('#select-' + index).replaceWith('<button type="button" class="btn btn-primary" id="select-"' + index + '" disabled="disabled">' + message + '</button>');
+				$('#select-' + index).replaceWith('<button type="button" class="btn btn-primary" id="select-' + index + '" disabled="disabled">' + message + '</button>');
 			}
 
 		}
