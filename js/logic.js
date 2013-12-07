@@ -174,11 +174,15 @@ $(document).ready(function() {
 
 		alert(series_lower.toString());
 
-		// re-initializes character buttons to default
-		for (var i = 0; i < series_lower.length; i++) {
-			alert("The index value in this reboot is " + series_lower[i]);
+		i = 0;
 
-			$('#select-' + index).replaceWith('<button type="button" class="btn btn-primary" id="select-' + series_lower[i] + '">This song is ' + series[index] + '!</button>');
+		// re-initializes character buttons to default
+		for(var index in clicked) {
+			alert("The index value in this reboot is " + index);
+
+			$('#select-' + index).replaceWith('<button type="button" class="btn btn-primary" id="select-' + index + '">This song is ' + series[i] + '!</button>');
+
+			i++;
 		}
 
 	});
