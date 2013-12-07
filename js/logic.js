@@ -22,19 +22,14 @@ $(document).ready(function() {
 	// assigns value of selected array element to variable
 	var selected = series[random];
 
-	// debugging, delete when done
-	alert("Value of random is " + random + ", character is " + selected);
-
 	// initializes audio (picks audio track based on selected character / score)
 	initializeAudio();
+
 
 	// when character guesses are made by user
 
 		// when Mario is selected
 		$('#select-mario').click(function() {
-
-			// console log for debugging
-			alert('Mario was clicked!');
 
 			if (selected == 'Mario') {
   				message = "1UP for you!";
@@ -55,9 +50,6 @@ $(document).ready(function() {
 		// when Link is selected
 		$('#select-link').click(function() {
 
-			// console log for debugging
-			alert('Link was clicked!');
-
 			if (selected == 'Link') {
   				message = "Extra heart!";
   				button_colour = "success";
@@ -76,9 +68,6 @@ $(document).ready(function() {
 
 		// when Samus is selected
 		$('#select-samus').click(function() {
-
-			// console log for debugging
-			alert('Samus was clicked!');
 
 			if (selected == 'Samus') {
   				message = "Hyper beam found!";
@@ -99,9 +88,6 @@ $(document).ready(function() {
 		// when Donkey Kong is selected
 		$('#select-dk').click(function() {
 
-			// console log for debugging
-			alert('Donkey Kong was clicked!');
-
 			if (selected == 'DK') {
   				message = "Bananas for all!";
   				button_colour = "success";
@@ -120,9 +106,6 @@ $(document).ready(function() {
 
 		// when Fox McCloud is selected
 		$('#select-fox').click(function() {
-
-			// console log for debugging
-			alert('Fox McCloud was clicked!');
 
 			if (selected == 'Fox') {
   				message = "Do a barrel roll!";
@@ -143,9 +126,16 @@ $(document).ready(function() {
 	// end character click
 
 
+
 	// when reboot button is selected
 	$('#reboot-game').click(function() {
 
+		location.reload();
+
+	});
+
+
+/*
 		// console log for debugging
 		alert('Reboot was clicked!');
 
@@ -185,19 +175,22 @@ $(document).ready(function() {
 		i = 0;
 
 		// re-initializes character buttons to default
-		for(var index in series_lower) {
+		for (var i = 0; i < series.length; i++) {
+
 			alert("The index value in this reboot is " + series_lower[i]);
 
 			$('#select-' + series_lower[i]).replaceWith('<button type="button" class="btn btn-primary" id="select-' + series_lower[i] + '">This song is ' + series[i] + '!</button>');
 
-			i++;
+			alert("This button value is now: #select-" + series_lower[i]);
+
 		}
-
-		alert("Series is now: " + series.toString());
-
+										
 		alert("Selected is now: " + selected.toString());
 
+		alert("Clicked is now: " + clicked.toString());
 	});
+
+*/
 
 
 	// randomly pick
@@ -228,7 +221,7 @@ $(document).ready(function() {
 		clicked['dk'] = "ready";
 		clicked['fox'] = "ready";
 
-	}
+	} // end initialize game function
 
 
 	// creates audio player elements, based on randomly selected character and corresponding song 
@@ -237,7 +230,7 @@ $(document).ready(function() {
 		// generate audio player with randomly selected audio clip
 		$('#random_song').html('<audio controls><source src="audio/' + series[random] + '.mp3" type="audio/mpeg">Unfortunately, it appears that your browser does not support the audio playback element.</audio>');
 
-	}
+	} // end audio initialization function
 
 
 	// function to update all buttons upon click
@@ -249,15 +242,13 @@ $(document).ready(function() {
 		// update all buttons that have not been clicked yet
 		for(var index in clicked) {
 
-			alert("The current value of index is " + index);
-
 			if (clicked[index] == "ready") {
 				$('#select-' + index).replaceWith('<button type="button" class="btn btn-primary" id="select-' + index + '" disabled="disabled">' + message + '</button>');
 			}
 
 		}
 
-	} // end disable buttons
+	} // end disable buttons function
 
 
 	// decreases current score by 1
@@ -267,6 +258,7 @@ $(document).ready(function() {
 
 		// updates scoreboard element
 		$('#scoreboard').replaceWith('<div id="scoreboard">Hearts: ' + scoreboard + '</div>');
-	}
+
+	} // end decrease score function
 
 }); //end ready]
