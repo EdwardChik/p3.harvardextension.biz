@@ -8,8 +8,11 @@ $(document).ready(function() {
 	// create an array of base series string values
 	var series = [];
 
+	// tracks button clicked status
+	var clicked = [];
+
 	// initializes page (i.e. characters, score)
-	initialize();
+	initializeGame();
 
 	// randomly select song + image (integer)
 	var random = Math.floor(Math.random()*5);
@@ -21,9 +24,7 @@ $(document).ready(function() {
 	alert("Value of random is " + random + ", character is " + selected);
 
 
-	// generate audio player with randomly selected audio clip
-	$('#random_song').html('<audio controls><source src="audio/' + series[random] + '.mp3" type="audio/mpeg">Unfortunately, it appears that your browser does not support the audio playback element.</audio>');
-
+	initializeAudio();
 
 	// when series are selected by user
 
@@ -140,8 +141,18 @@ $(document).ready(function() {
 	// end character click
 
 
+
+	// creates audio player elements, based on randomly selected character and corresponding song 
+	function initializeAudio() {
+
+		// generate audio player with randomly selected audio clip
+		$('#random_song').html('<audio controls><source src="audio/' + series[random] + '.mp3" type="audio/mpeg">Unfortunately, it appears that your browser does not support the audio playback element.</audio>');
+
+	}
+
+
 	// initialize game
-	function initialize() {
+	function initializeGame() {
 
 		// resets scoreboard
 		scoreboard = 5;
@@ -152,9 +163,6 @@ $(document).ready(function() {
 		series[2] = "Super Metroid";
 		series[3] = "Donkey Kong Country";
 		series[4] = "Star Fox";
-
-		// tracks button clicked status
-		var clicked = [];
 
 		// initializes button states
 		clicked['mario'] = "ready";
