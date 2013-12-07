@@ -14,8 +14,10 @@ $(document).ready(function() {
 	// initializes page (i.e. characters, score)
 	initializeGame();
 
-	// randomly select song + image (integer)
-	var random = Math.floor(Math.random()*5);
+	// randomly picks from options
+	var random;
+
+	randomPick();
 
 	// assigns value of selected array element to variable
 	var selected = series[random];
@@ -23,10 +25,10 @@ $(document).ready(function() {
 	// debugging, delete when done
 	alert("Value of random is " + random + ", character is " + selected);
 
-
+	// initializes audio (picks audio track based on selected character / score)
 	initializeAudio();
 
-	// when series are selected by user
+	// when character guesses are made by user
 
 		// when Mario is selected
 		$('#select-mario').click(function() {
@@ -34,11 +36,11 @@ $(document).ready(function() {
 			// console log for debugging
 			alert('Mario was clicked!');
 
-			if (selected == 'Super Mario') {
+			if (selected == 'Mario') {
   				message = "1UP for you!";
   				button_colour = "success";
 				clicked['mario'] = "right";
-				disableButtons("mario");
+				disableButtons();
   			} else {
   				message = "Sorry, not Mario.";
   				button_colour = "danger";
@@ -56,11 +58,11 @@ $(document).ready(function() {
 			// console log for debugging
 			alert('Link was clicked!');
 
-			if (selected == 'The Legend of Zelda') {
+			if (selected == 'Link') {
   				message = "Extra heart!";
   				button_colour = "success";
   				clicked['link'] = "right";
-				disableButtons("link");
+				disableButtons();
   			} else {
   				message = "Sorry, not Link.";
   				button_colour = "danger";
@@ -78,11 +80,11 @@ $(document).ready(function() {
 			// console log for debugging
 			alert('Samus was clicked!');
 
-			if (selected == 'Super Metroid') {
+			if (selected == 'Samus') {
   				message = "Hyper beam found!";
   				button_colour = "success";
   				clicked['samus'] = "right";
-				disableButtons("samus");
+				disableButtons();
   			} else {
   				message = "Sorry, not Samus.";
   				button_colour = "danger";
@@ -95,51 +97,122 @@ $(document).ready(function() {
 		});
 
 		// when Donkey Kong is selected
-		$('#select-donkey-kong').click(function() {
+		$('#select-dk').click(function() {
 
 			// console log for debugging
 			alert('Donkey Kong was clicked!');
 
-			if (selected == 'Donkey Kong Country') {
+			if (selected == 'DK') {
   				message = "Bananas for all!";
   				button_colour = "success";
-  				clicked['donkey-kong'] = "right";
-				disableButtons("donkey-kong");
+  				clicked['dk'] = "right";
+				disableButtons();
   			} else {
   				message = "Sorry, not DK.";
   				button_colour = "danger";
-  				clicked['donkey-kong'] = "wrong";
+  				clicked['dk'] = "wrong";
   				decreaseScore();
   			}
 
-			$('#select-donkey-kong').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-donkey-kong" disabled="disabled">' + message + '</button>');
+			$('#select-dk').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-dk" disabled="disabled">' + message + '</button>');
 			
 		});
 
 		// when Fox McCloud is selected
-		$('#select-fox-mccloud').click(function() {
+		$('#select-fox').click(function() {
 
 			// console log for debugging
 			alert('Fox McCloud was clicked!');
 
-			if (selected == 'Star Fox') {
+			if (selected == 'Fox') {
   				message = "Do a barrel roll!";
   				button_colour = "success";
-  				clicked['fox-mccloud'] = "right";
-				disableButtons("fox-mccloud");
+  				clicked['fox'] = "right";
+				disableButtons();
   			} else {
   				message = "Sorry, not Fox.";
   				button_colour = "danger";
-  				clicked['fox-mccloud'] = "wrong";
+  				clicked['fox'] = "wrong";
   				decreaseScore();
   			}
 
-			$('#select-fox-mccloud').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-fox-mccloud" disabled="disabled">' + message + '</button>');
+			$('#select-fox').replaceWith('<button type="button" class="btn btn-' + button_colour + '" id="select-fox" disabled="disabled">' + message + '</button>');
 			
 		});
 
 	// end character click
 
+
+	// when reboot button is selected
+	$('#reboot-game').click(function() {
+
+		// console log for debugging
+		alert('Reboot was clicked!');
+
+		// restores game state to default
+		initializeGame();
+
+		// randomly picks again
+		randomPick();
+
+		// assigns new random pick to selected
+		selected = series[random];
+
+		// randomly loads a new audio track
+		initializeAudio();
+
+		$('#scoreboard').replaceWith('<div id="scoreboard">Hearts: 5</div>');
+
+		// re-initializes clicked tracking
+		for(var index in clicked) {
+			clicked[index] = "ready";
+
+			alert("The current value of initialization is " + index);		
+		}
+
+		var series_lower = series.slice(0);
+
+		alert(series_lower.toString());
+
+		// re-initializes character buttons to default
+		for (var i = 0; i < series_lower.length; i++) {
+			alert("The index value in this reboot is " + series_lower[i]);
+
+			$('#select-' + index).replaceWith('<button type="button" class="btn btn-primary" id="select-' + series_lower[i] + '">This song is ' + series[index] + '!</button>');
+		}
+
+	});
+
+
+	// randomly pick
+	function randomPick() {
+
+		// randomly select song + image (integer)
+		random = Math.floor(Math.random()*5);
+
+	}
+
+	// initialize game
+	function initializeGame() {
+
+		// resets scoreboard
+		scoreboard = 5;
+
+		// creates game series array and assigns base values
+		series[0] = "Mario";
+		series[1] = "Link";
+		series[2] = "Samus";
+		series[3] = "DK";
+		series[4] = "Fox";
+
+		// creates clicked status array and assigns base values
+		clicked['mario'] = "ready";
+		clicked['link'] = "ready";
+		clicked['samus'] = "ready";
+		clicked['dk'] = "ready";
+		clicked['fox'] = "ready";
+
+	}
 
 
 	// creates audio player elements, based on randomly selected character and corresponding song 
@@ -151,53 +224,21 @@ $(document).ready(function() {
 	}
 
 
-	// initialize game
-	function initializeGame() {
-
-		// resets scoreboard
-		scoreboard = 5;
-
-		// assign base series values to array
-		series[0] = "Super Mario";
-		series[1] = "The Legend of Zelda";
-		series[2] = "Super Metroid";
-		series[3] = "Donkey Kong Country";
-		series[4] = "Star Fox";
-
-		// initializes button states
-		clicked['mario'] = "ready";
-		clicked['link'] = "ready";
-		clicked['samus'] = "ready";
-		clicked['donkey-kong'] = "ready";
-		clicked['fox-mccloud'] = "ready";
-
-	}
-
-
 	// function to update all buttons upon click
 	function disableButtons() {
 
+		// sets variable with message for disabled / not selected buttons
 		var message = "Not selected.";
 
 		// update all buttons that have not been clicked yet
-		if (clicked['mario'] == "ready") {
-			$('#select-mario').replaceWith('<button type="button" class="btn btn-primary" id="select-mario" disabled="disabled">' + message + '</button>');
-		}
+		for(var index in clicked) {
 
-		if (clicked['link'] == "ready") {
-			$('#select-link').replaceWith('<button type="button" class="btn btn-primary" id="select-mario" disabled="disabled">' + message + '</button>');
-		}
+			alert("The current value of index is " + index);
 
-		if (clicked['samus'] == "ready") {
-			$('#select-samus').replaceWith('<button type="button" class="btn btn-primary" id="select-mario" disabled="disabled">' + message + '</button>');
-		}
+			if (clicked[index] == "ready") {
+				$('#select-' + index).replaceWith('<button type="button" class="btn btn-primary" id="select-"' + index + '" disabled="disabled">' + message + '</button>');
+			}
 
-		if (clicked['donkey-kong'] == "ready") {
-			$('#select-donkey-kong').replaceWith('<button type="button" class="btn btn-primary" id="select-mario" disabled="disabled">' + message + '</button>');
-		}
-
-		if (clicked['fox-mccloud'] == "ready") {
-			$('#select-fox-mccloud').replaceWith('<button type="button" class="btn btn-primary" id="select-mario" disabled="disabled">' + message + '</button>');
 		}
 
 	} // end disable buttons
