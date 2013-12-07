@@ -31,6 +31,7 @@ $(document).ready(function() {
 		// when Mario is selected
 		$('#select-mario').click(function() {
 
+			// sets flags based on match with randomly selected character
 			if (selected == 'Mario') {
   				message = "1UP for you!";
   				button_colour = "success";
@@ -50,6 +51,7 @@ $(document).ready(function() {
 		// when Link is selected
 		$('#select-link').click(function() {
 
+			// sets flags based on match with randomly selected character
 			if (selected == 'Link') {
   				message = "Extra heart!";
   				button_colour = "success";
@@ -69,6 +71,7 @@ $(document).ready(function() {
 		// when Samus is selected
 		$('#select-samus').click(function() {
 
+			// sets flags based on match with randomly selected character
 			if (selected == 'Samus') {
   				message = "Hyper beam found!";
   				button_colour = "success";
@@ -88,6 +91,7 @@ $(document).ready(function() {
 		// when Donkey Kong is selected
 		$('#select-dk').click(function() {
 
+			// sets flags based on match with randomly selected character
 			if (selected == 'DK') {
   				message = "Bananas for all!";
   				button_colour = "success";
@@ -107,6 +111,7 @@ $(document).ready(function() {
 		// when Fox McCloud is selected
 		$('#select-fox').click(function() {
 
+			// sets flags based on match with randomly selected character
 			if (selected == 'Fox') {
   				message = "Do a barrel roll!";
   				button_colour = "success";
@@ -133,64 +138,6 @@ $(document).ready(function() {
 		location.reload();
 
 	});
-
-
-/*
-		// console log for debugging
-		alert('Reboot was clicked!');
-
-		// restores game state to default
-		initializeGame();
-
-		// randomly picks again
-		randomPick();
-
-		// assigns new random pick to selected
-		selected = series[random];
-
-		// randomly loads a new audio track
-		initializeAudio();
-
-		$('#scoreboard').replaceWith('<div id="scoreboard">Hearts: 5</div>');
-
-
-		// convert series names to lowercase for button values
-		var series_lower = [];
-
-		for (var i = 0; i < series.length; i++) {
-			series_lower[i] = series[i].toLowerCase();
-		}
-
-		alert("Series_lower is now: " + series_lower.toString());
-
-
-		for(var index in series_lower) {
-			clicked[index] = "ready";
-		}
-
-		alert("Clicked is now: " + clicked.toString());
-
-		alert("Series_lower is now: " + series_lower.toString());
-
-		i = 0;
-
-		// re-initializes character buttons to default
-		for (var i = 0; i < series.length; i++) {
-
-			alert("The index value in this reboot is " + series_lower[i]);
-
-			$('#select-' + series_lower[i]).replaceWith('<button type="button" class="btn btn-primary" id="select-' + series_lower[i] + '">This song is ' + series[i] + '!</button>');
-
-			alert("This button value is now: #select-" + series_lower[i]);
-
-		}
-										
-		alert("Selected is now: " + selected.toString());
-
-		alert("Clicked is now: " + clicked.toString());
-	});
-
-*/
 
 
 	// randomly pick
@@ -261,4 +208,4 @@ $(document).ready(function() {
 
 	} // end decrease score function
 
-}); //end ready]
+}); //end ready
